@@ -1,6 +1,6 @@
 /* Para testar console.log basta abrir terminal, cd scripts / node script.js */
 
-cVáriaveis
+/* Váriaveis
     const -> é uma constante, não pode alterar seu valor.
     let -> é um contador, pode alterar o valor.
     var -> é a maneira antiga, existia apenas o var (não recomendado).
