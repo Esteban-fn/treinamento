@@ -5,11 +5,21 @@
 <head>
     <meta charset="UTF-8"> <!-- permite usar caracteres especiais corretamente -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- faz o site se adaptar corretamente ao celular. -->
-    <title>Document</title> 
+    <title>Login</title>
+    <link rel="stylesheet" href="../styles/home.css"> <!-- link: tag usada para incluir arquivos externos, como folhas de estilo CSS, no documento HTML -->
 </head>
 <body>
 
+    <div class="login-box"> <!-- A tag div é um bloco usado para organizar e separar partes do site no HTML --> <!-- class: atributo usado para dar um nome ao elemento, permitindo estilizar no CSS ou manipular no JavaScript -->
+       <h2>Login</h2> 
+        <form> <!-- form: tag usada para criar formulários e enviar dados do usuário, como login, cadastro e pesquisas -->
+            <input type="email" placeholder="E-mail" required> <!-- input: campo usado para o usuário digitar ou selecionar informações em um formulário -->
+            <input type="password" placeholder="Senha" required>
+            <input type="submit" value="Entrar">
+        </form>
 
+        <a href="#">Ainda não possui conta? Cadastre-se</a>
+    </div> 
     
 </body>
 </html>
