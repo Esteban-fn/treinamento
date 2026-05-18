@@ -12,14 +12,16 @@
 
     <div class="login-box"> <!-- A tag div é um bloco usado para organizar e separar partes do site no HTML --> <!-- class: atributo usado para dar um nome ao elemento, permitindo estilizar no CSS ou manipular no JavaScript -->
        <h2>Login</h2> 
-        <form> <!-- form: tag usada para criar formulários e enviar dados do usuário, como login, cadastro e pesquisas -->
-            <input type="email" placeholder="E-mail" required> <!-- input: campo usado para o usuário digitar ou selecionar informações em um formulário -->
-            <input type="password" placeholder="Senha" required>
+        <form id="login-form"> <!-- form: tag usada para criar formulários e enviar dados do usuário, como login, cadastro e pesquisas -->
+            <input id="email" type="email" placeholder="E-mail" required> <!-- input: campo usado para o usuário digitar ou selecionar informações em um formulário -->
+            <input id="password" type="password" placeholder="Senha" required>
             <input type="submit" value="Entrar">
         </form>
 
         <a href="#">Ainda não possui conta? Cadastre-se</a>
-    </div> 
+    </div>
+    
+    <script src="../scripts/tela1.js"></script>
     
 </body>
 </html>
