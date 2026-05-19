@@ -1,30 +1,38 @@
-// 1. Pegamos o formulário todo
-const formulario = document.getElementById("login-form")
+import { auth } from "./firebase-config.js";
+import { 
+    signInWithEmailAndPassword, 
+    GoogleAuthProvider, 
+    signInWithPopup 
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// 2. Pegamos o campo de e-mail e de senha
-const email = document.getElementById("email")
-const password = document.getElementById("password")
+// --- LOGIN MANUAL (E-MAIL/SENHA) ---
+const formulario = document.getElementById("login-form");
 
-// Adicionamos o "vigia" para o evento de SUBMIT (enviar)
-formulario.addEventListener('submit', function(evento) {
+formulario.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    const emailDigitado = document.getElementById("email").value;
+    const passwordDigitado = document.getElementById("password").value;
 
-    // IMPORTANTE: Isso impede a página de recarregar e perder os dados
-    evento.preventDefault()
+    signInWithEmailAndPassword(auth, emailDigitado, passwordDigitado)
+        .then(() => {
+            window.location.href = "tela1.html";
+        })
+        .catch((error) => {
+            alert("Erro ao entrar: " + error.message);
+        });
+});
 
-    // 3. Pegando o que o usuário escreveu NAQUELE MOMENTO
-    const emailDigitado = email.value
-    const passwordDigitado = password.value
+// --- LOGIN COM GOOGLE ---
+const btnGoogle = document.getElementById('google-login');
 
-    // Teste simples para ver se funcionou (aparece no console do navegador - F12)
-    console.log(emailDigitado, passwordDigitado)
-
-    // 4. A Lógica de Redirecionamento
-    // Se o e-mail for "teste@email.com" e a senha "123", ele entra
-    if (emailDigitado === "teste@email.com" && passwordDigitado === "123") {
-        alert("Login bem-sucedido! Redirecionando para a próxima página...")
-        // Aqui você pode usar window.location.href para redirecionar para outra página
-        window.location.href = "tela1.html";
-    } else {
-        alert("E-mail ou senha incorretos. Tente novamente.")
-    }
+btnGoogle.addEventListener('click', () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            alert("Olá, " + result.user.displayName);
+            window.location.href = "tela1.html";
+        })
+        .catch((error) => {
+            console.error("Erro Google:", error.code);
+        });
 });
